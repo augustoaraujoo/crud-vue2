@@ -15,6 +15,7 @@
               name='name'
               class='form-control'
               placeholder='Type Your Name'
+              v-model='employee.name'
             />
           </div>
           <!-- FIM BLOCO: Employee Name -->
@@ -28,6 +29,7 @@
               name='job_role'
               class='form-control'
               placeholder='Type Your Job Role'
+              v-model='employee.job_role'
             />
           </div>
           <!-- FIM BLOCO: Job Role -->
@@ -41,6 +43,7 @@
               name='salary'
               class='form-control'
               placeholder='Type Your Salary'
+              v-model='employee.salary'
             />
           </div>
           <!-- FIM BLOCO: Salary -->
@@ -54,6 +57,7 @@
               name='birth'
               class='form-control'
               placeholder='YYYY/MM/DD'
+              v-model='employee.birth'
             />
           </div>
           <!-- FIM BLOCO: Birth -->
@@ -67,6 +71,7 @@
               name='employee_registration'
               class='form-control'
               placeholder='Employee Registration'
+              v-model='employee.employee_registration'
             />
           </div>
           <!-- FIM BLOCO: Employee Registration -->
@@ -80,3 +85,19 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      employee: {
+        name: '',
+        job_role: '',
+        salary: '',
+        birth: '',
+        employee_registration: '',
+      },
+    };
+  },
+};
+</script>
