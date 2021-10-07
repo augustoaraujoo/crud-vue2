@@ -5,7 +5,7 @@
         <h3>Add Employee</h3>
       </div>
       <div class='card-body'>
-        <form v-on:submit.prevent='handleSubmitForm()'>
+        <form @submit.prevent>
           <!-- INÍCIO BLOCO: Employee Name -->
           <div class='form-group'>
             <label class='font-weight-bold'>Employee Name</label>
@@ -16,6 +16,7 @@
               class='form-control'
               placeholder='Type Your Name'
               v-model='employee.name'
+              required
             />
           </div>
           <!-- FIM BLOCO: Employee Name -->
@@ -30,6 +31,7 @@
               class='form-control'
               placeholder='Type Your Job Role'
               v-model='employee.job_role'
+              required
             />
           </div>
           <!-- FIM BLOCO: Job Role -->
@@ -44,6 +46,7 @@
               class='form-control'
               placeholder='Type Your Salary'
               v-model='employee.salary'
+              required
             />
           </div>
           <!-- FIM BLOCO: Salary -->
@@ -58,6 +61,7 @@
               class='form-control'
               placeholder='YYYY/MM/DD'
               v-model='employee.birth'
+              required
             />
           </div>
           <!-- FIM BLOCO: Birth -->
@@ -72,6 +76,7 @@
               class='form-control'
               placeholder='Employee Registration'
               v-model='employee.employee_registration'
+              required
             />
           </div>
           <!-- FIM BLOCO: Employee Registration -->
@@ -98,6 +103,11 @@ export default {
         employee_registration: '',
       },
     };
+  },
+  methods: {
+    submitNewEmployee() {
+      console.log(this.employee.name);
+    },
   },
 };
 </script>
