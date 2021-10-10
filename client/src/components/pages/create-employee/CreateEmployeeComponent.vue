@@ -141,11 +141,11 @@ export default {
   data() {
     return {
       employeeForm: {
-        name: '',
-        job_role: '',
-        salary: '',
-        birth: '',
-        employee_registration: '',
+        name: null,
+        job_role: null,
+        salary: null,
+        birth: null,
+        employee_registration: null,
       },
       isSubmitted: false,
     };
