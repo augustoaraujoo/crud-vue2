@@ -8,5 +8,5 @@ import axios from 'axios';
 
 export default () => axios.create({
     //base url fara a comunicação do front com o back
-    baseURL: '',
+    baseURL: 'http://localhost:3080/api',
 })
