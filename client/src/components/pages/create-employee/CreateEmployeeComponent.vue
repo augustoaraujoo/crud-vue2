@@ -16,8 +16,13 @@
               class='form-control'
               placeholder='Type Your Name'
               v-model='employee.name'
-              required
+              :class="{'is-invalid': isSubmitted && $v.employeeForm.name.$error}"
             />
+          </div>
+          <div
+           v-if="isSubmited && !$v.employeeForm.name.required"
+           class="invalid-feedback">
+           Employee Name required!
           </div>
           <!-- FIM BLOCO: Employee Name -->
 
@@ -31,8 +36,13 @@
               class='form-control'
               placeholder='Type Your Job Role'
               v-model='employee.job_role'
-              required
+              :class="{'is-invalid': isSubmitted && $v.employeeForm.job_role.$error}"
             />
+          </div>
+          <div
+           v-if="isSubmited && !$v.employeeForm.job_role.required"
+           class="invalid-feedback">
+           job_role Name required!
           </div>
           <!-- FIM BLOCO: Job Role -->
 
@@ -46,8 +56,14 @@
               class='form-control'
               placeholder='Type Your Salary'
               v-model='employee.salary'
-              required
+              :class="{'is-invalid': isSubmitted && $v.employeeForm.salary.$error}"
             />
+            />
+          </div>
+           <div
+           v-if="isSubmited && !$v.employeeForm.salary.required"
+           class="invalid-feedback">
+           salary Name required!
           </div>
           <!-- FIM BLOCO: Salary -->
 
@@ -61,8 +77,13 @@
               class='form-control'
               placeholder='YYYY/MM/DD'
               v-model='employee.birth'
-              required
+              :class="{'is-invalid': isSubmitted && $v.employeeForm.birth.$error}"
             />
+          </div>
+          <div
+           v-if="isSubmited && !$v.employeeForm.birth.required"
+           class="invalid-feedback">
+           birth Name required!
           </div>
           <!-- FIM BLOCO: Birth -->
 
@@ -76,8 +97,13 @@
               class='form-control'
               placeholder='Employee Registration'
               v-model='employee.employee_registration'
-              required
+              :class="{'is-invalid': isSubmitted && $v.employeeForm.employee_registration.$error}"
             />
+          </div>
+          <div
+           v-if="isSubmited && !$v.employeeForm.employee_registration.required"
+           class="invalid-feedback">
+           employee_registration Name required!
           </div>
           <!-- FIM BLOCO: Employee Registration -->
           <div class='form-group'>
