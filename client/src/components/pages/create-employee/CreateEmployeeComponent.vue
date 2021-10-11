@@ -66,7 +66,7 @@
                 'is-invalid': isSubmitted && $v.employeeForm.salary.$error,
               }"
             />
-            />
+
           </div>
           <div
             v-if="isSubmited && !$v.employeeForm.salary.required"
@@ -161,7 +161,11 @@ export default {
   },
   methods: {
     handleSubmitForm() {
-      console.log(this.employee.name);
+      this.isSubmitted = true;
+      this.$v.$touch();
+      if (this.$v.invalid) {
+        return; 
+      }
     },
   },
 };
