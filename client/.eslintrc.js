@@ -13,12 +13,8 @@ module.exports = {
   rules: {
     'prefer-destructuring': 'off',
     'no-unused-vars': 'off',
-    'linebreak-style':'off',
-    'eol-last': 'off',
     'no-useless-return': 'off',
-    'import/extensions': 'off',
-    'no-trailing-spaces' : 'off',
-    'no-trailing-spaces': 'off',
+    'vue/no-parsing-error': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },

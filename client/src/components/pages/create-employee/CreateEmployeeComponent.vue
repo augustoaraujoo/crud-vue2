@@ -8,7 +8,7 @@
         <form @submit.prevent='handleSubmitForm()'>
           <!-- INÍCIO BLOCO: Employee Name -->
           <div class="form-group">
-            <label class="font-weight-bold">Employee Name</label>
+            <label class="font-weight-bold"> Employee Name</label>
             <input
               type="text"
               id="name"
@@ -123,8 +123,8 @@
           </div>
           <!-- FIM BLOCO: Employee Registration -->
           <div class="form-group">
-            <button class="btn btn-primary" type="submit">
-              Employee
+            <button class="btn btn-primary">
+              <font-awesome-icon :icon="['fas', 'user-plus']" /> Employee
             </button>
           </div>
         </form>
@@ -164,7 +164,7 @@ export default {
       this.isSubmitted = true;
       this.$v.$touch();
       if (this.$v.invalid) {
-        return; 
+        return;
       }
     },
   },
