@@ -4,10 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "api",
+    "crud",
+    "azure-functions",
+    "github-actions",
+    "express",
+    "swa",
+    "serverless",
+    "postgresql",
+    "sql",
+    "javascript"
+  ],
+  "author": "Augusto Araujo da Rocha @augustoaraujoo",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
