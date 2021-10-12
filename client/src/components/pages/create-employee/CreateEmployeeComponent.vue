@@ -124,7 +124,7 @@
           <!-- FIM BLOCO: Employee Registration -->
           <div class="form-group">
             <button class="btn btn-primary">
-              <font-awesome-icon :icon="['fas', 'user-plus']" /> Employee
+              <font-awesome-icon @click="submitNewEmployee" :icon="['fas', 'user-plus']" /> Employee
             </button>
           </div>
         </form>
@@ -135,6 +135,7 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators';
+import EmployeeService from '../../../services/EmployeeService';
 
 export default {
   name: 'CreateEmployeeComponent',
@@ -165,6 +166,16 @@ export default {
       this.$v.$touch();
       if (this.$v.invalid) {
         return;
+      }
+    },
+    async submitNewEmployee() {
+      try {
+        await EmployeeService.createNewEmployee(this.employeeForm);
+        this.$router.push({
+          name: 'list',
+        });
+      } catch (error) {
+        console.log(error);
       }
     },
   },
