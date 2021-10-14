@@ -28,3 +28,10 @@ exports.createEmployee = async (req, res) => {
         });
     }
 };
+
+// ➡️ Método responsável por listar todos os 'Employess'
+
+exports.ListAllEmployees = async (req, res) => {
+    const response = await db.query('SELECT * FROM employee ORDER by name ASC');
+    res.status(200).send(response.rows);
+}
