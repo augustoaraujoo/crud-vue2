@@ -1,7 +1,7 @@
 /*
     *descrição: arquivo responsável pelas rotas da API
 */
-const router = require('express-promise-router')();
+const router = require('express').Router();
 const employeeController = require('../controllers/employee.controller');
 
 // ==> Definindo as rotas do CRUD - 'Employee'
