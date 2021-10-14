@@ -32,19 +32,29 @@ exports.createEmployee = async (req, res) => {
 // ➡️ Método responsável por listar todos os 'Employess'
 
 exports.listAllEmployees = async (req, res) => {
-    const response = await db.query('SELECT * FROM employee ORDER by name ASC');
-    res.status(200).send(response.rows);
+    try {
+        const response = await db.query('SELECT * FROM employee ORDER by name ASC');
+        res.status(200).send(response.rows);
+    } catch (error) {
+        console.log('listAllEmployees', error);
+        res.send(500).send({ message: 'Ocorreu um erro !' })
+    }
 }
 
 // ➡️ Método responsável por listar um determinado colaborador por ID
 
 exports.findEmployeeById = async (req, res) => {
-    const employeeId = req.params.id;
-    const response = await db.query('SELECT * FROM employee WHERE employee_id = $1', [employeeId]);
-    res.status(200).send(response.rows);
+    try {
+        const { id } = req.params;
+        const response = await db.query('SELECT * FROM employee WHERE employee_id = $1', [id]);
+        res.status(200).send(response.rows);
+    } catch (error) {
+        console.log('findEmployeeById', error);
+        res.status(500).send({ message: 'erro' })
+    }
 }
 
-// ==> Método responsável por atualizar um determinado 'Employee' por Id:
+// ➡️ Método responsável por atualizar um determinado 'Employee' por Id:
 exports.updateEmployeeById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -66,3 +76,20 @@ exports.updateEmployeeById = async (req, res) => {
         });
     }
 };
+
+// ➡️ 
+exports.deleteEmployeeById = async (req, res) => {
+    const { id } = req.params;
+    try {
+
+        // const response = db.query("DELETE FROM employee WHERE employee_id = $1", [id]);
+        await db.query("DELETE FROM employee WHERE employee_id = $1", [id]);
+        res.status(200).send({ message: 'Employee deleted Successfully!' });
+
+    } catch (error) {
+        console.error('deleteEmployeeById', error);
+        res.status(500).send({
+            message: 'Ocorreu um erro.'
+        });
+    }
+}
