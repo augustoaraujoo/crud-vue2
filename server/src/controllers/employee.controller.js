@@ -29,7 +29,7 @@ exports.createEmployee = async (req, res) => {
     }
 };
 
-// ➡️ Método responsável por listar todos os 'Employess'
+// ➡️ Método responsável por listar todos os 'Employess':
 
 exports.listAllEmployees = async (req, res) => {
     try {
@@ -41,7 +41,7 @@ exports.listAllEmployees = async (req, res) => {
     }
 }
 
-// ➡️ Método responsável por listar um determinado colaborador por ID
+// ➡️ Método responsável por listar um determinado colaborador por ID:
 
 exports.findEmployeeById = async (req, res) => {
     try {
@@ -54,7 +54,7 @@ exports.findEmployeeById = async (req, res) => {
     }
 }
 
-// ➡️ Método responsável por atualizar um determinado 'Employee' por Id:
+// ➡️ Método responsável por atualizar um determinado 'Employee' por ID:
 exports.updateEmployeeById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -77,7 +77,7 @@ exports.updateEmployeeById = async (req, res) => {
     }
 };
 
-// ➡️ 
+// ➡️ método responsável por deletar um 'Employee' por ID:
 exports.deleteEmployeeById = async (req, res) => {
     const { id } = req.params;
     try {

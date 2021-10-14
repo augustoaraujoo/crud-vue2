@@ -5,7 +5,7 @@
         <h3>Add Employee</h3>
       </div>
       <div class="card-body">
-        <form @submit.prevent='handleSubmitForm()'>
+        <form @submit.prevent="handleSubmitForm()">
           <!-- INÍCIO BLOCO: Employee Name -->
           <div class="form-group">
             <label class="font-weight-bold"> Employee Name</label>
@@ -66,7 +66,6 @@
                 'is-invalid': isSubmitted && $v.employeeForm.salary.$error,
               }"
             />
-
           </div>
           <div
             v-if="isSubmited && !$v.employeeForm.salary.required"
@@ -123,8 +122,11 @@
           </div>
           <!-- FIM BLOCO: Employee Registration -->
           <div class="form-group">
-            <button class="btn btn-primary">
-              <font-awesome-icon @click="submitNewEmployee" :icon="['fas', 'user-plus']" /> Employee
+            <button class="btn btn-primary" @click="submitNewEmployee">
+              <font-awesome-icon
+                :icon="['fas', 'user-plus']"
+              />
+              Employee
             </button>
           </div>
         </form>
@@ -132,52 +134,4 @@
     </div>
   </div>
 </template>
-
-<script>
-import { required } from 'vuelidate/lib/validators';
-import EmployeeService from '../../../services/EmployeeService';
-
-export default {
-  name: 'CreateEmployeeComponent',
-  data() {
-    return {
-      employeeForm: {
-        name: null,
-        job_role: null,
-        salary: null,
-        birth: null,
-        employee_registration: null,
-      },
-      isSubmitted: false,
-    };
-  },
-  validations: {
-    employeeForm: {
-      name: { required },
-      job_role: { required },
-      salary: { required },
-      birth: { required },
-      employee_registration: { required },
-    },
-  },
-  methods: {
-    handleSubmitForm() {
-      this.isSubmitted = true;
-      this.$v.$touch();
-      if (this.$v.invalid) {
-        return;
-      }
-    },
-    async submitNewEmployee() {
-      try {
-        await EmployeeService.createNewEmployee(this.employeeForm);
-        this.$router.push({
-          name: 'list',
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-};
-</script>
+<script src='./CreateEmployee.js' scopped></script>
