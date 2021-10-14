@@ -31,7 +31,15 @@ exports.createEmployee = async (req, res) => {
 
 // ➡️ Método responsável por listar todos os 'Employess'
 
-exports.ListAllEmployees = async (req, res) => {
+exports.listAllEmployees = async (req, res) => {
     const response = await db.query('SELECT * FROM employee ORDER by name ASC');
+    res.status(200).send(response.rows);
+}
+
+// ➡️ Método responsável por listar um determinado colaborador por ID
+
+exports.findEmployeeById = async (req, res) => {
+    const employeeId = req.params.id;
+    const response = await db.query('SELECT * FROM employee WHERE employee_id = $1', [employeeId]);
     res.status(200).send(response.rows);
 }

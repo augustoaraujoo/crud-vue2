@@ -11,7 +11,9 @@ const employeeController = require('../controllers/employee.controller');
 router.post('/employees', employeeController.createEmployee);
 
 // ➡️ rota responsável por listar todos os 'Colaboradores': (GET) localhost:3000/api/employees
-router.get('/employees', employeeController.ListAllEmployees);
+router.get('/employees', employeeController.listAllEmployees);
 
+// ==> Rota responsável por listar um determinado 'Colaborador' por Id: (GET): localhost:3000/api/employees/:id
+router.get('/employees/:id', employeeController.findEmployeeById)
 
 module.exports = router;
