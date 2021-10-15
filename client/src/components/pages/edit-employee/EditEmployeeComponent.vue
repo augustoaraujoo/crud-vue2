@@ -1,65 +1,101 @@
 <template>
-  <div class='container'>
-    <div class='card'>
-      <div class='card-header'>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
         <h3>Update Employee</h3>
       </div>
-      <div class='card-body'>
-        <form >
+      <div class="card-body">
+        <form>
           <!--INÍCIO DO BLOCO: Employee Name-->
-          <div class='form-group'>
-            <label class='font-weight-bold'>Employee Name</label>
-            <input type='text' id='name' name='name' class='form-control' />
+          <div class="form-group">
+            <label class="font-weight-bold">Employee Name</label>
+            <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            v-model="employeeForm.name"
+            />
           </div>
-          <!--FIM DO BLOCO: Employee Name-->
+          <!--FIM DO BLOCO: Employeae Name-->
 
           <!--INÍCIO DO BLOCO: Job Role-->
-          <div class='form-group'>
-            <label class='font-weight-bold'>Job Role</label>
+          <div class="form-group">
+            <label class="font-weight-bold">Job Role</label>
             <input
-              type='text'
-              id='job_role'
-              name='job_role'
-              class='form-control'
+              type="text"
+              id="job_role"
+              name="job_role"
+              class="form-control"
+              v-model="employeeForm.job_role"
             />
           </div>
           <!--FIM DO BLOCO: Job Role-->
 
           <!--INÍCIO DO BLOCO: Salary-->
-          <div class='form-group'>
-            <label class='font-weight-bold'>Salary</label>
+          <div class="form-group">
+            <label class="font-weight-bold">Salary</label>
             <input
-              type='number'
-              id='salary'
-              name='salary'
-              class='form-control'
+              type="number"
+              id="salary"
+              name="salary"
+              class="form-control"
+              v-model="employeeForm.salary"
             />
           </div>
           <!--FIM DO BLOCO: Job Role-->
 
           <!--INÍCIO DO BLOCO: Birth-->
-          <div class='form-group'>
-            <label class='font-weight-bold'>Birth</label>
-            <input type='date' id='birth' name='birth' class='form-control' />
+          <div class="form-group">
+            <label class="font-weight-bold">Birth</label>
+            <input
+            type="date"
+            id="birth"
+            name="birth"
+            class="form-control"
+            v-model="employeeForm.birth"
+            />
           </div>
           <!--FIM DO BLOCO: Birth-->
 
           <!--INÍCIO DO BLOCO: Employee Registration-->
-          <div class='form-group'>
-            <label class='font-weight-bold'>Employee Registration</label>
+          <div class="form-group">
+            <label class="font-weight-bold">Employee Registration</label>
             <input
-              type='text'
-              id='employee_registration'
-              name='employee_registration'
-              class='form-control'
+              type="text"
+              id="employee_registration"
+              name="employee_registration"
+              class="form-control"
+              v-model="employeeForm.employee_registration"
             />
           </div>
           <!--FIM DO BLOCO: Birth-->
-          <div class='form-group'>
-            <button type='submit' class='btn btn-primary'>Update</button>
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              @click="updateEmployee(employee.employee_id)"
+            >
+              Update
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </template>
+<script>
+
+import EmployeeService from '@/services/EmployeeService';
+
+export default {
+  name: 'EditEmployeeComponent',
+  data() {
+    return {
+      employees: [],
+      employeeForm: {
+      },
+    };
+  },
+};
+</script>

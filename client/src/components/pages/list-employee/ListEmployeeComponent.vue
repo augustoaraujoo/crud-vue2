@@ -10,10 +10,12 @@
           <th class="text-center">Birth</th>
           <th class="text-center">Employee Registration</th>
           <th class="text-center">Actions</th>
+          <input type="email" class="form-control"
+          placeholder="seacrh Employee name" v-model="seacrhEmployees">
         </tr>
       </thead>
       <tbody v-if="employees !=0">
-        <tr v-for="employee in employees" :key="employee.employee_id">
+        <tr v-for="employee in viewEmployeeSearch" :key="employee.employee_id">
           <td>{{ employee.name }}</td>
           <td>{{ employee.job_role }}</td>
           <td>{{ employee.salary }}</td>

@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       employees: [],
+      seacrhEmployees: null,
     };
   },
   mounted() {
@@ -38,6 +39,14 @@ export default {
           this.$swal('Cancelled', 'Cancel deletion', 'info');
         }
       });
+    },
+  },
+  computed: {
+    viewEmployeeSearch() {
+      if (!this.seacrhEmployees) return this.employees;
+      return this.employees.filter((employees) => employees.name.toLowerCase().includes(
+        this.seacrhEmployees.toLowerCase(),
+      ));
     },
   },
 };
