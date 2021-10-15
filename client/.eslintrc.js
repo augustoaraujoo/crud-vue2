@@ -16,6 +16,7 @@ module.exports = {
     'no-useless-return': 'off',
     'vue/no-parsing-error': 'off',
     'consistent-return': 'off',
+    'no-empty-function': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },

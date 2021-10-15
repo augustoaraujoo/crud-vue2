@@ -12,28 +12,32 @@
           <th class="text-center">Actions</th>
         </tr>
       </thead>
-      <tbody>
-        <tr >
-          <td> employee.name </td>
-          <td> employee.job_role</td>
-          <td> employee.salary </td>
-          <td> employee.birth </td>
-          <td> employee.employee_registration </td>
+      <tbody v-if="employees !=0">
+        <tr v-for="employee in employees" :key="employee.employee_id">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.job_role }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>{{ employee.birth }}</td>
+          <td> {{employee.employee_registration}} </td>
           <td>
-            <router-link>
-             Edit
+            <router-link
+              :to="{ name: 'update', params: { id: employee.employee_id } }"
+              class="btn btn-success">
+              <font-awesome-icon :icon="['fas', 'user-edit']" /> Edit
             </router-link>
           </td>
           <td>
-            <button
-              @click="removeEmployee(employee.employee_id)"
-              class="btn btn-danger"
-            >
-              Delete
+            <button @click="removeEmployee(employee.employee_id)" class="btn btn-danger">
+              <font-awesome-icon :icon="['fas', 'trash']" /> Delete
             </button>
           </td>
         </tr>
       </tbody>
+      <div v-else>
+        <p>não há employees</p>
+      </div>
     </table>
   </div>
 </template>
+
+<script src='./ListEmployee' scopped></script>
