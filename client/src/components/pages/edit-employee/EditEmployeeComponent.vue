@@ -5,7 +5,7 @@
         <h3>Update Employee</h3>
       </div>
       <div class="card-body">
-        <form v-for="employees in employee" :key="employees.id">
+        <form @submit.prevent v-for="employees in employee" :key="employees.employee_id">
           <!--INÍCIO DO BLOCO: Employee Name-->
           <div class="form-group">
             <label class="font-weight-bold">Employee Name</label>
@@ -106,8 +106,12 @@ export default {
   },
   methods: {
     async listEmployeeById() {
-      const response = await EmployeeService.getEmployeeId(this.$route.params.id);
-      this.employee = response;
+      const { id } = this.$route.params;
+      const response = await EmployeeService.getEmployeeId(id);
+      this.employee = { ...response };
+    },
+    updateEmployee() {
+      console.log(this.employee_id);
     },
   },
 };
