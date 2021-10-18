@@ -5,7 +5,7 @@
         <h3>Update Employee</h3>
       </div>
       <div class="card-body">
-        <form>
+        <form v-for="employees in employee" :key="employees.id">
           <!--INÍCIO DO BLOCO: Employee Name-->
           <div class="form-group">
             <label class="font-weight-bold">Employee Name</label>
@@ -14,6 +14,7 @@
             id="name"
             name="name"
             class="form-control"
+            :placeholder="employees.name"
             v-model="employeeForm.name"
             />
           </div>
@@ -27,6 +28,7 @@
               id="job_role"
               name="job_role"
               class="form-control"
+              :placeholder="employees.job_role"
               v-model="employeeForm.job_role"
             />
           </div>
@@ -40,6 +42,7 @@
               id="salary"
               name="salary"
               class="form-control"
+              :placeholder="employees.salary"
               v-model="employeeForm.salary"
             />
           </div>
@@ -59,13 +62,14 @@
           <!--FIM DO BLOCO: Birth-->
 
           <!--INÍCIO DO BLOCO: Employee Registration-->
-          <div class="form-group">
+          <div class="form-group" >
             <label class="font-weight-bold">Employee Registration</label>
             <input
               type="text"
               id="employee_registration"
               name="employee_registration"
               class="form-control"
+              :placeholder="employees.employee_registration"
               v-model="employeeForm.employee_registration"
             />
           </div>
@@ -92,10 +96,19 @@ export default {
   name: 'EditEmployeeComponent',
   data() {
     return {
-      employees: [],
+      employee: null,
       employeeForm: {
       },
     };
+  },
+  mounted() {
+    this.listEmployeeById();
+  },
+  methods: {
+    async listEmployeeById() {
+      const response = await EmployeeService.getEmployeeId(this.$route.params.id);
+      this.employee = response;
+    },
   },
 };
 </script>
