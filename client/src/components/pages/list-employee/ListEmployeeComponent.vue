@@ -10,8 +10,9 @@
           <th class="text-center">Birth</th>
           <th class="text-center">Employee Registration</th>
           <th class="text-center">Actions</th>
-          <input type="text" v-model="inputEmployee"/>
+          <input type="text" class="input-group-text"  v-model="seacrhEmployees"/>
         </tr>
+          <input type="button" class="btn btn-dark" @click="clickBtn" ></input>
       </thead>
       <tbody>
         <tr v-for="employee in filterEmployee" :key="employee.employee_id">
@@ -33,6 +34,13 @@
             </button>
           </td>
         </tr>
+        <div>
+          <ul>
+            <li v-for="mod in model" :key="mod.employee_id">
+              {{mod.name.slice(0,7)}}
+            </li>
+          </ul>
+        </div>
       </tbody>
     </table>
   </div>

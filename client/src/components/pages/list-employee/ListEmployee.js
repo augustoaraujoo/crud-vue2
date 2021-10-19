@@ -14,13 +14,20 @@ export default {
   data() {
     return {
       employees: [],
-      inputEmployee: null,
+      seacrhEmployees: null,
+      click: false,
+      model: null,
+      putSalary: '100.00',
     };
   },
   mounted() {
     this.listAllEmployees();
   },
   methods: {
+    async clickBtn() {
+      const response = await EmployeeService.getEmployees();
+      this.model = response.filter((employees) => employees.salary < Math.trunc(this.putSalary));
+    },
     async listAllEmployees() {
       const response = await EmployeeService.getEmployees();
       this.employees = response;
@@ -52,9 +59,9 @@ export default {
   },
   computed: {
     filterEmployee() {
-      if (!this.inputEmployee) return this.employees;
+      if (!this.seacrhEmployees) return this.employees;
       return this.employees.filter((employees) => employees.name.toLowerCase().includes(
-        this.inputEmployee.toLowerCase(),
+        this.seacrhEmployees.toLowerCase(),
       ));
     },
   },
