@@ -10,3 +10,4 @@ app.listen(port, () => {
     console.log('ok', port);
 });
 //createEmployee error: null value in column "name" of relation "employee" violates not-null constraint
+//DATABASE_URL=postgres://postgres:root@localhost:5433/employee-api
