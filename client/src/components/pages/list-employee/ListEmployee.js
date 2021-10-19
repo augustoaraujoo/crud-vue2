@@ -1,11 +1,19 @@
-import EmployeeService from '@/services/EmployeeService';
+// @ts-nocheck
+/**
+ * file: src/components/pages/list-employee/ListEmployee.js
+ * data: 11/11/2020
+ * description: arquivo responsável pela lógica do componente
+ *  ListEmployeeComponent.vue'
+ * author:  @augustoaraujoo
+ */
+
+import EmployeeService from '../../../services/EmployeeService';
 
 export default {
   name: 'ListEmployeeComponent',
   data() {
     return {
       employees: [],
-      seacrhEmployees: null,
     };
   },
   mounted() {
@@ -39,14 +47,6 @@ export default {
           this.$swal('Cancelled', 'Cancel deletion', 'info');
         }
       });
-    },
-  },
-  computed: {
-    viewEmployeeSearch() {
-      if (!this.seacrhEmployees) return this.employees;
-      return this.employees.filter((employees) => employees.name.toLowerCase().includes(
-        this.seacrhEmployees.toLowerCase(),
-      ));
     },
   },
 };

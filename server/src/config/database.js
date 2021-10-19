@@ -1,6 +1,8 @@
-/*
-    *descrição: arquivo responsável pelas 'connectrionStrings' (cosmo db e postgreSql)
-*/
+/**
+ * arquivo: config/database.js
+ * descrição: arquivo responsável pelas 'connectrionStrings' (Cosmos DB & PostgreSQL)
+ * author:  @augustoaraujoo
+ */
 
 const { Pool } = require('pg');
 const dotenv = require('dotenv');

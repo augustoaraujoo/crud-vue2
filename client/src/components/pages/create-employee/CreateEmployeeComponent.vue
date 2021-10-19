@@ -5,10 +5,10 @@
         <h3>Add Employee</h3>
       </div>
       <div class="card-body">
-        <form @submit.prevent="handleSubmitForm()">
+        <form v-on:submit.prevent="handleSubmitForm()">
           <!-- INÍCIO BLOCO: Employee Name -->
           <div class="form-group">
-            <label class="font-weight-bold"> Employee Name</label>
+            <label class="font-weight-bold">Employee Name</label>
             <input
               type="text"
               id="name"
@@ -20,12 +20,12 @@
                 'is-invalid': isSubmitted && $v.employeeForm.name.$error,
               }"
             />
-          </div>
-          <div
-            v-if="isSubmited && !$v.employeeForm.name.required"
-            class="invalid-feedback"
-          >
-            Employee Name required!
+            <div
+              v-if="isSubmitted && !$v.employeeForm.name.required"
+              class="invalid-feedback"
+            >
+              'Employee Name' field is required!
+            </div>
           </div>
           <!-- FIM BLOCO: Employee Name -->
 
@@ -43,12 +43,12 @@
                 'is-invalid': isSubmitted && $v.employeeForm.job_role.$error,
               }"
             />
-          </div>
-          <div
-            v-if="isSubmited && !$v.employeeForm.job_role.required"
-            class="invalid-feedback"
-          >
-            job_role Name required!
+            <div
+              v-if="isSubmitted && !$v.employeeForm.job_role.required"
+              class="invalid-feedback"
+            >
+              'Job Role' field is required!
+            </div>
           </div>
           <!-- FIM BLOCO: Job Role -->
 
@@ -66,12 +66,12 @@
                 'is-invalid': isSubmitted && $v.employeeForm.salary.$error,
               }"
             />
-          </div>
-          <div
-            v-if="isSubmited && !$v.employeeForm.salary.required"
-            class="invalid-feedback"
-          >
-            salary Name required!
+            <div
+              v-if="isSubmitted && !$v.employeeForm.salary.required"
+              class="invalid-feedback"
+            >
+              'Salary' field is required!
+            </div>
           </div>
           <!-- FIM BLOCO: Salary -->
 
@@ -89,12 +89,12 @@
                 'is-invalid': isSubmitted && $v.employeeForm.birth.$error,
               }"
             />
-          </div>
-          <div
-            v-if="isSubmited && !$v.employeeForm.birth.required"
-            class="invalid-feedback"
-          >
-            birth Name required!
+            <div
+              v-if="isSubmitted && !$v.employeeForm.birth.required"
+              class="invalid-feedback"
+            >
+              'Birth' field is required!
+            </div>
           </div>
           <!-- FIM BLOCO: Birth -->
 
@@ -113,20 +113,19 @@
                   isSubmitted && $v.employeeForm.employee_registration.$error,
               }"
             />
-          </div>
-          <div
-            v-if="isSubmited && !$v.employeeForm.employee_registration.required"
-            class="invalid-feedback"
-          >
-            employee_registration Name required!
+            <div
+              v-if="
+                isSubmitted && !$v.employeeForm.employee_registration.required
+              "
+              class="invalid-feedback"
+            >
+              'Employee Registration' field is required!
+            </div>
           </div>
           <!-- FIM BLOCO: Employee Registration -->
           <div class="form-group">
-            <button class="btn btn-primary" @click="submitNewEmployee">
-              <font-awesome-icon
-                :icon="['fas', 'user-plus']"
-              />
-              Employee
+            <button @click="submitNewEmployee" class="btn btn-primary">
+              <font-awesome-icon :icon="['fas', 'user-plus']" /> Employee
             </button>
           </div>
         </form>
@@ -134,4 +133,7 @@
     </div>
   </div>
 </template>
-<script src='./CreateEmployee.js' scopped></script>
+
+<script src="./CreateEmployee.js"></script>
+
+<style src="" scoped></style>

@@ -10,17 +10,15 @@
           <th class="text-center">Birth</th>
           <th class="text-center">Employee Registration</th>
           <th class="text-center">Actions</th>
-          <input type="email" class="form-control"
-          placeholder="seacrh Employee name" v-model="seacrhEmployees">
         </tr>
       </thead>
-      <tbody v-if="employees !=0">
-        <tr v-for="employee in viewEmployeeSearch" :key="employee.employee_id">
+      <tbody>
+        <tr v-for="employee in employees" :key="employee.employee_id">
           <td>{{ employee.name }}</td>
           <td>{{ employee.job_role }}</td>
           <td>{{ employee.salary }}</td>
-          <td>{{ employee.birth.slice(0,10) }}</td>
-          <td> {{employee.employee_registration}} </td>
+          <td>{{ employee.birth }}</td>
+          <td>{{ employee.employee_registration }}</td>
           <td>
             <router-link
               :to="{ name: 'update', params: { id: employee.employee_id } }"
@@ -35,11 +33,10 @@
           </td>
         </tr>
       </tbody>
-      <div v-else>
-        <p>não há employees</p>
-      </div>
     </table>
   </div>
 </template>
 
-<script src='./ListEmployee' scopped></script>
+<script src="./ListEmployee.js"></script>
+
+<style src="" scoped></style>

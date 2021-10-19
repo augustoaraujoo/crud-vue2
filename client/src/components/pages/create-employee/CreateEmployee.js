@@ -1,5 +1,14 @@
+// @ts-nocheck
+/**
+ * file: src/components/pages/create-employee/CreateEmployee.js
+ * data: 09/11/2020
+ * description: arquivo responsável pela lógica do componente
+ *  'CreateEmployeeComponent.vue'
+ * author: @augustoaraujoo
+ */
+
 import { required } from 'vuelidate/lib/validators';
-import EmployeeService from '@/services/EmployeeService';
+import EmployeeService from '../../../services/EmployeeService';
 
 export default {
   name: 'CreateEmployeeComponent',
@@ -54,7 +63,5 @@ export default {
         console.log(error);
       }
     },
-  },
-  computed: {
   },
 };
