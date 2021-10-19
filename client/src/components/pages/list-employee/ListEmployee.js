@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       employees: [],
+      inputEmployee: null,
     };
   },
   mounted() {
@@ -47,6 +48,14 @@ export default {
           this.$swal('Cancelled', 'Cancel deletion', 'info');
         }
       });
+    },
+  },
+  computed: {
+    filterEmployee() {
+      if (!this.inputEmployee) return this.employees;
+      return this.employees.filter((employees) => employees.name.toLowerCase().includes(
+        this.inputEmployee.toLowerCase(),
+      ));
     },
   },
 };

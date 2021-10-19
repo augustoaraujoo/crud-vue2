@@ -10,10 +10,11 @@
           <th class="text-center">Birth</th>
           <th class="text-center">Employee Registration</th>
           <th class="text-center">Actions</th>
+          <input type="text" v-model="inputEmployee"/>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="employee in employees" :key="employee.employee_id">
+        <tr v-for="employee in filterEmployee" :key="employee.employee_id">
           <td>{{ employee.name }}</td>
           <td>{{ employee.job_role }}</td>
           <td>{{ employee.salary }}</td>
