@@ -26,16 +26,14 @@ exports.createEmployee = async (req, res) => {
 // ==> Método responsável por listar todos os 'Employees':
 exports.listAllEmployees = async (req, res) => {
     try {
-        const { rows } = await db.query(
-            `SELECT 
+        const { rows } = await db.query(`SELECT 
             employee_id,
             name, 
             job_role, 
             salary, 
             employee_registration, 
             to_char(birth, 'yyyy-MM-dd') as birth 
-            FROM employee ORDER BY name asc`
-        );
+            FROM employee ORDER BY name asc`);
         res.status(200).send(rows);
     } catch (error) {
         console.error('listAllEmployees', error);
@@ -44,3 +42,19 @@ exports.listAllEmployees = async (req, res) => {
         });
     }
 };
+exports.deleteEmployeeById = async (req, res) => {
+    const { id } = req.params
+    try {
+        await db.query(
+            "DELETE FROM employee WHERE employee_id = $1", [id]
+        )
+        res.status(200).send({
+            message: 'employee deleted'
+        })
+    } catch (error) {
+        console.log('deleteEmployeeById', error);
+        res.status(500).send({
+            message: 'error'
+        })
+    }
+}
