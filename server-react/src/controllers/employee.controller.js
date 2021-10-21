@@ -42,6 +42,39 @@ exports.listAllEmployees = async (req, res) => {
         });
     }
 };
+
+
+// ==> Método responsável por listar um determinado 'Employee' por Id:
+exports.findEmployeeById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const { rows } = await db.query(`
+        select
+        employee_id,
+        name, 
+        job_role,
+        salary, 
+        birth,
+        employee_registration
+        from employee where employee_id = $1
+      `, [id])
+        if (!rows.length) {
+            throw 'employee_not_found'
+        };
+        res.status(200).send(rows[0]);
+    } catch (error) {
+        console.log('findEmployeeById', error);
+        if (error = 'employee_not_found') {
+            res.status(404).send({
+                message: 'Employee not found'
+            });
+        }
+        res.status(500).send({
+            message: 'error'
+        });
+    }
+};
+
 exports.deleteEmployeeById = async (req, res) => {
     const { id } = req.params
     try {
