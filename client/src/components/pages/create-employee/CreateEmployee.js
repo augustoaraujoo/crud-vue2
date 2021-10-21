@@ -7,6 +7,7 @@
  * author: @augustoaraujoo
  */
 
+import axios from 'axios';
 import { required } from 'vuelidate/lib/validators';
 import EmployeeService from '../../../services/EmployeeService';
 
@@ -33,9 +34,17 @@ export default {
       employee_registration: { required },
     },
   },
+  mounted() {
+    this.view();
+  },
+
   methods: {
     handleSubmitForm() {},
-
+    view() {
+      axios.get('https://crudvue2.herokuapp.com/api/employees/').then((response) => {
+        console.log(response.data);
+      });
+    },
     async submitNewEmployee() {
       try {
         this.isSubmitted = true;
