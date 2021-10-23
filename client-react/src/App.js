@@ -18,6 +18,8 @@ function App() {
   const [salary, setSalary] = useState(0);
   const [birth, setBirth] = useState(0);
   const [employee_registration, setEmployee_registration] = useState(0);
+  const [listEmployees, setEmployees] = useState([])
+
   async function createNewEmployee() {
     const response = await servicesApi.createNewEmployee({
       name,
@@ -28,11 +30,19 @@ function App() {
     })
     return response
   }
-
+  async function getEmployees() {
+    const response = await servicesApi.getEmployees();
+    console.log(response);
+    return setEmployees(response)
+  }
+  async function deleteEmployee(id) {
+    await servicesApi.deleteEmployee(id)
+    return servicesApi.getEmployees()
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <form>
+      <header className="App-header" >
+        <form className='form_createEmployees'>
           <input
             type="text"
             placeholder='setName'
@@ -70,11 +80,27 @@ function App() {
               setBirth(event.target.value);
             }}
           />
-          <button onClick={createNewEmployee}></button>
+          <button className='button_createNewEmployee'
+          onClick={createNewEmployee}>
+            submit
+          </button>
         </form>
+
+        <button onClick={getEmployees}>Show Employees</button>
+        {listEmployees.map((val, id) => {
+          return (
+            <div className='container_employees'>
+              <p>{val.name}</p>
+              <p>{val.job_role}</p>
+              <p>{val.salary}</p>
+              <p>{val.birth}</p>
+              <p>{val.employee_registration}</p>
+              <button onClick={deleteEmployee(id)}>delete Employee</button>
+            </div>
+          )
+        })}
         <Router>
           <Link to='/'>/HOME</Link>
-          <div></div>
           <Link to='/listEmployees'>List</Link>
           <Switch>
             <Route path='/' exact component={Page1} />

@@ -1,4 +1,6 @@
-const Page2 = () =>{
+const Page2 = (props) =>{
+    const movieId = props.match.params.id;
+    console.log(movieId);
     return(
         <div
         style={{

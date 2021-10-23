@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.App-header{
+    width: 100%;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+.form_createEmployees{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgb(214, 214, 245);
+}
+.form_createEmployees input{
+    margin: 10px;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+}
+.button_createNewEmployee{
+    margin: 5px;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+}
+.form_createEmployees ::placeholder {
+    text-align: center;
+}
